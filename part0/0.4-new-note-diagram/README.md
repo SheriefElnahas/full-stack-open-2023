@@ -22,5 +22,6 @@ participant server
     server-->>browser: Server response with json.data ( Array of notes )
     browser->>+server: GET Request favicon.ico
     server-->>browser: Server response favicon
+    browser->>+User: Render the page on the browser
 
 ```
