@@ -1,3 +1,4 @@
+```
 sequenceDiagram
 
 actor User
@@ -20,3 +21,4 @@ participant server
     server-->>browser: Server response with json.data ( Array of notes )
     browser->>+server: GET Request favicon.ico
     server-->>browser: Server response favicon
+```
