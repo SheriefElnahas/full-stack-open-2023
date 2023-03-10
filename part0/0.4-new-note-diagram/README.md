@@ -14,14 +14,17 @@ participant server
     Note over browser,server: Status Code 302 ( URL Redirect )
     server->>+browser: Make a GET request with the provided url
     Note right of browser: Reload
-    browser->>+server: GET Request  main.css
+    browser->>+server: GET Request to ( https://studies.cs.helsinki.fi/exampleapp/notes )
+    server-->>browser: Server response with index.html file
+    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/main.css)
     server-->>browser: Server response with main.css
-    browser->>+server: GET Request main.js
+    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/main.js)
     server-->>browser: Server response with main.js
-    browser->>+server: GET Request json.data
+    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/json.data)
     server-->>browser: Server response with json.data ( Array of notes )
-    browser->>+server: GET Request favicon.ico
-    server-->>browser: Server response favicon
-    browser->>+User: Render the page on the browser
+    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/favicon.ico)
+    server-->>browser: Server response with favicon
+    browser->>+User: Takes index.html , main.css, main.js, json.data, favicon
+    Note right of User: Render the webpage on the screen
 
 ```
