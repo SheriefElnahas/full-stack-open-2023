@@ -11,4 +11,5 @@ participant server
     Note over browser,server: Content/type: application/json ( required for the server to pare the data)
     server->>+browser: response with Status Code 201 ( Created ) no redirect
     Note over browser,server: browser execute the callback which renders the note on the screen
+
 ```
