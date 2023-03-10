@@ -20,11 +20,11 @@ participant server
     server-->>browser: Server response with main.css
     browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/main.js)
     server-->>browser: Server response with main.js
-    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/json.data)
-    server-->>browser: Server response with json.data ( Array of notes )
+    browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/data.json)
+    server-->>browser: Server response with data.json ( Array of notes )
     browser->>+server: GET Request  to (https://studies.cs.helsinki.fi/exampleapp/favicon.ico)
     server-->>browser: Server response with favicon
-    browser->>+User: Takes index.html , main.css, main.js, json.data, favicon
+    browser->>+User: Takes index.html , main.css, main.js, data.json, favicon
     Note right of User: Render the webpage on the screen
 
 ```
