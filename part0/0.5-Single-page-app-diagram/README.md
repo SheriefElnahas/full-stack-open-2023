@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-title Exercise New Note Diagram
+title Exercise 0.5: SPA Diagram
 actor User
 participant browser
 participant server
