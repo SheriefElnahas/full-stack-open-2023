@@ -5,6 +5,17 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
-  return <div>{anecdotes[selected]}</div>;
+  // const randomNum = Math.floor(Math.random() * anecdotes.length);
+  // console.log(selected, randomNum);
+
+  const generateRandomNum = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length));
+  };
+  return (
+    <main>
+      <p>{anecdotes[selected]}</p>
+      <button onClick={generateRandomNum}>Next Anecdote</button>
+    </main>
+  );
 };
 export default App;
