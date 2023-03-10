@@ -1,4 +1,5 @@
 ```mermaid
+sequenceDiagram
 title Exercise New Note SPA Diagram
 actor User
 participant browser
