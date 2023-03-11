@@ -16,10 +16,14 @@ const Content = ({ parts }) => (
   </>
 );
 const Course = ({ course }) => {
+  // console.log(course.parts);
+  const sum = course.parts.map((part) => part.exercises).reduce((acc, value) => acc + value);
+
   return (
     <section>
       <Header courseName={course.name} />
       <Content parts={course.parts} />
+      <Total sum={sum} />
     </section>
   );
 };
