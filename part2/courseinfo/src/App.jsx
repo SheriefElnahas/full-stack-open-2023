@@ -1,6 +1,10 @@
-const Header = ({ courseName }) => <h1>{courseName}</h1>;
+const Header = ({ courseName }) => <h2>{courseName}</h2>;
 
-const Total = ({ sum }) => <p>Number of exercises {sum}</p>;
+const Total = ({ sum }) => (
+  <p>
+    <strong>Total Of {sum}</strong>
+  </p>
+);
 
 const Part = ({ part }) => (
   <p>
@@ -16,6 +20,7 @@ const Content = ({ parts }) => (
   </>
 );
 const Course = ({ course }) => {
+  console.log(course);
   // console.log(course.parts);
   const sum = course.parts.map((part) => part.exercises).reduce((acc, value) => acc + value);
 
@@ -28,29 +33,59 @@ const Course = ({ course }) => {
   );
 };
 const App = () => {
-  const course = {
-    id: 1,
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10,
-        id: 1,
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7,
-        id: 2,
-      },
-      {
-        name: 'State of a component',
-        exercises: 14,
-        id: 3,
-      },
-    ],
-  };
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1,
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2,
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3,
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4,
+        },
+      ],
+    },
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1,
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2,
+        },
+      ],
+    },
+  ];
 
-  return <Course course={course} />;
+  return (
+    <main>
+      <h1>Web Development Curriculum</h1>
+      {courses.map((course) => {
+        return <Course key={course.id} course={course} />;
+      })}
+    </main>
+  );
 };
 
 export default App;
