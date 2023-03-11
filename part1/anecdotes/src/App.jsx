@@ -12,16 +12,28 @@ const App = () => {
     setVotes(newArr);
   };
 
+  const indexOfHighestVote = votes.indexOf(Math.max(...votes));
+
   const generateRandomNum = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length));
   };
+
   return (
     <main>
-      <p>{anecdotes[selected]}</p>
-      <p>This Anecdotes has {votes[selected]}</p>
+      <section>
+        <h2>Ancedote of the day</h2>
+        <p>{anecdotes[selected]}</p>
+        <p>has {votes[selected]}</p>
 
-      <button onClick={handleVotes}>Vote</button>
-      <button onClick={generateRandomNum}>Next Anecdote</button>
+        <button onClick={handleVotes}>Vote</button>
+        <button onClick={generateRandomNum}>Next Anecdote</button>
+      </section>
+
+      <section>
+        <h2>Ancedote with most votes</h2>
+        <p>{anecdotes[indexOfHighestVote]}</p>
+        <p>has {votes[indexOfHighestVote]}</p>
+      </section>
     </main>
   );
 };
