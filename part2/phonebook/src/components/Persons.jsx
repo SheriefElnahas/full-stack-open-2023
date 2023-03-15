@@ -1,15 +1,19 @@
 import React from 'react';
 
-function Persons({ persons, searchTerm }) {
+function Persons({ persons, searchTerm, deleteUser }) {
+  const handleDelete = (id) => {
+    deleteUser(id);
+  };
   return (
     <div>
       {persons
         .filter((person) => person.name.toLowerCase().includes(searchTerm.toLowerCase()))
         .map((person) => {
           return (
-            <p key={person.name}>
+            <div key={person.name}>
               {person.name} {person.number}
-            </p>
+              <button onClick={() => handleDelete(person.id)}>Delete</button>
+            </div>
           );
         })}
     </div>
