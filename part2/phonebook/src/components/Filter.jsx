@@ -1,14 +1,16 @@
-function Filter({ persons, setPersons }) {
+function Filter({ searchTerm, setSearchTerm }) {
   const handleFilter = (e) => {
-    const filtered = persons.filter((person) => person.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    setSearchTerm(e.target.value);
 
-    setPersons(filtered);
+    // const filtered = persons.filter((person) => person.name.toLowerCase().includes(e.target.value.toLowerCase()));
+
+    // setPersons(filtered);
   };
   return (
     <div>
       <label htmlFor="filter">
         Filter shown with
-        <input type="text" onChange={handleFilter} />
+        <input type="text" value={searchTerm} onChange={handleFilter} />
       </label>
     </div>
   );
