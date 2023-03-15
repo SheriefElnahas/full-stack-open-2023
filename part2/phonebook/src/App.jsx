@@ -19,7 +19,16 @@ const App = () => {
     persons.find((person) => {
       if (person.name.toLowerCase() === newName.toLowerCase()) {
         alert(`${newName} is already added to the phonebook`);
+        setNewName('');
+        return;
+      } else {
+        const newUser = { name: newName, number: newNumber };
+        setPersons((prevState) => {
+          return [...prevState, newUser];
+        });
       }
+      setNewName('');
+      setNewNumber('');
     });
   };
   return (
