@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import personService from './services/personService';
 
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
@@ -10,8 +11,11 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/persons').then((res) => {
-      setPersons(res.data);
+    // axios.get('http://localhost:3000/persons').then((res) => {
+    //   setPersons(res.data);
+    // });
+    personService.getAll().then((initialPersons) => {
+      setPersons(initialPersons);
     });
   }, []);
 
