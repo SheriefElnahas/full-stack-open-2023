@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function PersonForm({ persons, setPersons, updateUser }) {
+function PersonForm({ persons, setPersons, updateUser, setNotificationMessage }) {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
 
@@ -23,6 +23,10 @@ function PersonForm({ persons, setPersons, updateUser }) {
       setPersons((prevState) => {
         return [...prevState, newUser];
       });
+      setNotificationMessage(`Added ${newName}`);
+      setTimeout(() => {
+        setNotificationMessage(null);
+      }, 2000);
     }
 
     setNewName('');
