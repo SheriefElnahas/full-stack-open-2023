@@ -10,7 +10,7 @@ import Notification from './components/Notification';
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [notificationMessage, setNotificationMessage] = useState('');
+  const [notificationMessage, setNotificationMessage] = useState(null);
 
   useEffect(() => {
     personService
@@ -41,14 +41,22 @@ const App = () => {
     const updateCheck = window.confirm(`${userObj.name} is already added to the phonebook, replace the old number with a new one ?`);
 
     if (updateCheck) {
-      personService.update(userId, userObj).then((returnedUser) => {
-        setPersons(persons.map((person) => (person.id !== userId ? person : returnedUser)));
+      personService
+        .update(userId, userObj)
+        .then((returnedUser) => {
+          setPersons(persons.map((person) => (person.id !== userId ? person : returnedUser)));
 
-        setNotificationMessage(`${userObj.name} data successfully updated`);
-        setTimeout(() => {
-          setNotificationMessage(null);
-        }, 2000);
-      });
+          setNotificationMessage(`${userObj.name} data successfully updated`);
+          setTimeout(() => {
+            setNotificationMessage(null);
+          }, 2000);
+        })
+        .catch((error) => {
+          setNotificationMessage(`Information of ${userObj.name} has already removed from the server`);
+          setTimeout(() => {
+            setNotificationMessage(null);
+          }, 2000);
+        });
     }
   };
   return (
