@@ -10,10 +10,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const { countries, error } = useAxios(searchTerm);
 
-  const handleClick = (country) => {
-    console.log(country);
-  };
-
   const renderedElement = (countries) => {
     if (countries.length > 10) {
       return <p>Too many matches, specify another filter</p>;

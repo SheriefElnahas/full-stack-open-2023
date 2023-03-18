@@ -1,15 +1,26 @@
-function CountryList(countries) {
+import { useState } from 'react';
+import Country from './Country';
+
+function CountryList({ countries }) {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const handleShowCountry = (country) => {
+    setSelectedCountry(country);
+  };
   return (
     <>
-      {countries.countries.map((country) => {
-        return (
-          <div key={country.name.common}>
-            <p>
-              {country.name.common} <button>Show me</button>
-            </p>
-          </div>
-        );
-      })}
+      <div>
+        {countries.map((country) => {
+          return (
+            <div key={country.name.common}>
+              <p>
+                {country.name.common} <button onClick={() => handleShowCountry(country)}>Show me</button>
+              </p>
+            </div>
+          );
+        })}
+      </div>
+      {selectedCountry && <Country country={selectedCountry} />}
     </>
   );
 }
