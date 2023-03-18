@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import SearchInput from './components/SearchInput';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,11 +26,20 @@ function App() {
     }
   }, [searchTerm]);
 
+  const handleClick = (country) => {
+      console.log(country)
+  }
+
   const renderedElement = (countries) => {
  if (countries.length > 10) {
       return <p>Too many matches, specify another filter</p>;
     } else if (countries.length < 10 && countries.length > 1) {
-      return countries.map((country) => <p key={country.name.common}>{country.name.common}</p>);
+      return countries.map((country) => {
+        return <div key={country.name.common}>
+          <p >{country.name.common}   <button onClick={() => handleClick(country)}>Show</button></p>
+
+        </div>
+      });
     } else if (countries.length === 1) {
 
       const { name, capital, area, languages, flags } = countries[0];
@@ -50,13 +60,10 @@ function App() {
     }
   };
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+
   return (
     <main>
-      <label htmlFor="search">Find Countries</label>
-      <input type="text" value={searchTerm} onChange={handleChange} id="search" />
+      <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       {!error &&  renderedElement(countries)}
       {error && <p>{error}</p>}
