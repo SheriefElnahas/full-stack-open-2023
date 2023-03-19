@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Country from './Country';
 
+
+
+
 function CountryList({ countries }) {
   const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -21,6 +24,7 @@ function CountryList({ countries }) {
         })}
       </div>
       {selectedCountry && <Country country={selectedCountry} />}
+
     </>
   );
 }

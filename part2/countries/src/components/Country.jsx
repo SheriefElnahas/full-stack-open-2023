@@ -1,6 +1,9 @@
-import React from 'react';
+
+import Weather from './Weather';
 
 function Country({ country }) {
+
+
   return (
     <section>
       {country && (
@@ -17,6 +20,7 @@ function Country({ country }) {
           <img src={country.flags.svg} alt="something" width="300" />
         </div>
       )}
+      <Weather capital={country.capital && country.capital[0] } />
     </section>
   );
 }
